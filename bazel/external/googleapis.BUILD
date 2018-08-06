@@ -20,3 +20,19 @@ py_proto_compile(
     inputs = ["@com_google_protobuf//:well_known_protos"],
     with_grpc = False,
 )
+
+cpp_proto_library(
+    name = "code_proto_cc",
+    protos = ["google/rpc/code.proto"],
+    imports = ["external/com_google_protobuf/src/"],
+    inputs = ["@com_google_protobuf//:well_known_protos"],
+    with_grpc = False,
+)
+
+py_proto_compile(
+    name = "code_proto_py",
+    protos = ["google/rpc/code.proto"],
+    imports = ["external/com_google_protobuf/src/"],
+    inputs = ["@com_google_protobuf//:well_known_protos"],
+    with_grpc = False,
+)
