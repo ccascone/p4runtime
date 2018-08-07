@@ -82,3 +82,36 @@ py_proto_compile(
             "@com_github_googleapis//:status_proto_py"],
   with_grpc = True,
 )
+
+load("@org_pubref_rules_protobuf//java:rules.bzl", "java_proto_library")
+
+java_proto_library(
+  name = "p4types_proto_java",
+  protos = ["p4/config/v1/p4types.proto"],
+  with_grpc = False,
+)
+
+java_proto_library(
+  name = "p4info_proto_java",
+  protos = ["p4/config/v1/p4info.proto"],
+  proto_deps = [":p4types_proto_java"],
+  imports = ["external/com_google_protobuf/src/"],
+  inputs = ["@com_google_protobuf//:well_known_protos"],
+  with_grpc = False,
+)
+
+java_proto_library(
+  name = "p4data_proto_java",
+  protos = ["p4/v1/p4data.proto"],
+  with_grpc = False,
+)
+
+java_proto_library(
+  name = "p4runtime_grpc_java",
+  protos = ["p4/v1/p4runtime.proto"],
+  proto_deps = [":p4info_proto_java", ":p4data_proto_java",
+                "@com_github_googleapis//:status_proto_java"],
+  imports = ["external/com_google_protobuf/src/"],
+  inputs = ["@com_google_protobuf//:well_known_protos"],
+  with_grpc = True,
+)

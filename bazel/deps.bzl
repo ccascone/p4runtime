@@ -8,8 +8,8 @@ def p4runtime_deps():
     if "org_pubref_rules_protobuf" not in native.existing_rules():
         remote_workspace(
             name = "org_pubref_rules_protobuf",
-            remote = "https://github.com/p4lang/rules_protobuf.git",
-            tag = "0.8.0-patched",
+            remote = "https://github.com/ccascone/rules_protobuf.git",
+            branch = "java-patched",
     )
 
     if "com_github_googleapis" not in native.existing_rules():

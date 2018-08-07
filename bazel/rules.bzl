@@ -1,6 +1,7 @@
 load("@org_pubref_rules_protobuf//protobuf:rules.bzl", "proto_repositories")
 load("@org_pubref_rules_protobuf//cpp:rules.bzl", "cpp_proto_repositories")
 load("@org_pubref_rules_protobuf//python:rules.bzl", "py_proto_repositories")
+load("@org_pubref_rules_protobuf//java:rules.bzl", "java_proto_repositories")
 
 def p4runtime_proto_repositories():
     """ Load proto repositories through org_pubref_rules_protobuf. """
@@ -31,4 +32,8 @@ def p4runtime_proto_repositories():
     py_proto_repositories(
         omit_cpp_repositories = True,
         excludes = ["com_google_protobuf"],
+    )
+
+    java_proto_repositories(
+        overrides = PROTOBUF_RULES_OVERRIDE,
     )
